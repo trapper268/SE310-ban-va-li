@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Azure;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using ThucHanhWebMVC.Models;
@@ -22,6 +24,16 @@ namespace ThucHanhWebMVC.Controllers
             int pageNumber = (int)((page == null || page < 0) ? 1 : page);
             var listsanpham = db.TDanhMucSps.AsNoTracking().OrderBy(x=>x.TenSp);
             PagedList<TDanhMucSp> lst = new PagedList<TDanhMucSp>(listsanpham, pageNumber, pageSize);
+            return View(lst);
+        }
+
+        public IActionResult SanPhamTheoLoai(String maloai, int? page)
+        {
+            int pageSize = 8;
+            int pageNumber = (int)((page == null || page < 0) ? 1 : page);
+            var listsanpham = db.TDanhMucSps.AsNoTracking().Where(x => x.MaLoai == maloai).OrderBy(x => x.TenSp);
+            PagedList<TDanhMucSp> lst = new PagedList<TDanhMucSp>(listsanpham, pageNumber, pageSize);
+            ViewBag.MaLoai = maloai;
             return View(lst);
         }
 
