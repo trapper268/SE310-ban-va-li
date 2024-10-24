@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using ThucHanhWebMVC.Models;
+using ThucHanhWebMVC.Repository;
+
 namespace ThucHanhWebMVC
 {
     public class Program
@@ -8,6 +12,12 @@ namespace ThucHanhWebMVC
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            var connectionString = builder.Configuration.GetConnectionString("QlbanValiContext");
+            builder.Services.AddDbContext<QlbanVaLiContext>(x=>x.UseSqlServer(connectionString));
+
+            builder.Services.AddScoped<ILoaiSpRepository, LoaiSpRepository>();
+
 
             var app = builder.Build();
 
