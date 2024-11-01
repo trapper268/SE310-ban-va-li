@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using ThucHanhWebMVC.Models;
+using ThucHanhWebMVC.Models.Authentication;
 using ThucHanhWebMVC.ViewModels;
 using X.PagedList;
 
@@ -18,7 +19,7 @@ namespace ThucHanhWebMVC.Controllers
         {
             _logger = logger;
         }
-
+        [Authentication]
         public IActionResult Index(int? page)
         {
             int pageSize = 8;
