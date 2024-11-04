@@ -24,7 +24,52 @@
             dataType: 'json',
             success: function (data) {
                 $.each(data, function (key, val) {
-                    str += '<p>' + val.tenSp + '</p>'
+                    // str += '<div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat" >';
+                    //     str += '<div class="featured__item" >'; 
+                    //         str += '<div class="featured__item__pic set-bg" data - setbg=\"';
+                    // var linkiamge = "../productsimages/images/" + $.trim(val.anhDaiDien);
+                    //         str += linkiamge;
+                    // str += '\" style = "background-image: url(& quot;';
+                    // str += linkiamge;
+                    // str += '&quot;);\">';
+                    // str += '<ul class="featured__item__pic__hover">';
+                    // str += '<li><a href="#" > <i class="fa fa-heart"></i></a></li>';
+                    // str += '< li > <a href="#" > <i class="fa fa-retweet" > </i></a > </li>';
+                    // str += '< li > <a href="#" > <i class="fa fa-shopping-cart" > </i></a > </li>';
+                    // str += '< /ul>< /div>';
+                    // str += '< div class="featured__item__text" >';
+                    // str += '<h6><a href=\"Home/Productdetail?maSp=';
+                    // str += $.trim(val.tenSp);
+                    // str += '\" >';
+                    // str += $.trim(val.tenSp);
+                    // str += '</a></h6><h5>';
+                    // str += val.gianhonhat.tostring();
+                    // str += '</h5></div></div></div>';
+
+
+
+                    str += '<div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat" >';
+                        str += '<div class="featured__item" >';
+                            str += '<div class="featured__item__pic set-bg" data - setbg=\"';
+                            var linkiamge = "../ProductsImages/Images/" + $.trim(val.anhDaiDien);
+                            str += linkiamge;
+                            str += '\" style = "background-image: url(&quot;';
+                            str += linkiamge + '&quot;);\">';
+                                str += '<ul class=\"featured__item__pic__hover\">';
+                                    str += '<li><a href="#" > <i class="fa fa-heart"></i></a></li>';
+                                    str += '<li><a href="#" > <i class="fa fa-retweet" > </i></a> </li>';
+                                    str += '<li><a href="#" > <i class="fa fa-shopping-cart" > </i></a> </li>';
+                                str += '</ul>';
+                            str += '</div>';
+
+                            str += '<div class=\"featured__item__text\">';
+                                str += '<h6><a href=\"Home/Productdetail?maSp=' + $.trim(val.tenSp) + '\" >';
+                                str += $.trim(val.tenSp);
+                                str += '</a></h6>';
+                                str += '<h5>' + val.giaNhoNhat.toString() + '</h5>';
+                            str += '</div>';
+                        str += '</div>';
+                    str += '</div>';
                 });
                 $('#displayProducts').html(str);
             },
